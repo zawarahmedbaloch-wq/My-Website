@@ -1,0 +1,519 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  </head>
+  <body>
+<header style="height: 75px;border-radius: 20px;box-shadow: 2px 3px 8px rgba(120, 199, 2, 0.4);position:sticky;top: 0;z-index: 100;background-color: white;" class="text-gray-600 body-font">
+  <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
+    <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
+     <img style="position: relative;left: 30px;bottom: 25px; width: 75px;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRmXc1vAn3EDcbjxb1TUozBDI2mUhgEZez5t9AQ_Yqscw&s=10" alt="Logo">
+      <span style="position: relative;left: 15px;bottom: 25px; font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;font-size: 30px;color: green;" class="ml-3 text-xl">Nexora</span>
+    </a>
+    <nav style="font-family:sans-serif;position: relative;left: 70px;bottom: 25px; font-size: small; color: green;" class="md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-none-400	flex flex-wrap items-center text-base justify-center">
+      <a href="index.html" style="cursor: default;" class="mr-5 hover:text-gray-900">Home</a>
+      <a style="cursor: default;" class="mr-5 hover:text-gray-900">Contact</a>
+      
+      <a style="cursor: default;" class="mr-5 hover:text-gray-900">About</a>
+      <a style="cursor: default;" class="mr-5 hover:text-gray-900">Login or Signup</a>
+    </nav>
+<input style="display: block;border-radius: 60px;color: green;box-shadow: 0px 2px 8px rgba(120, 199, 2, 0.4);padding: 8px 70px;outline: green;position: relative;right: 180px;bottom: 25px; font-size: small;" type="text" placeholder="Search Here" onkeyup="filteritems()">
+<a onmouseover="document.getElementById('heart-shape').setAttribute('fill', 'currentColor')" onmouseout="document.getElementById('heart-shape').setAttribute('fill', 'none')" style="display: inline-block; color: green; width: 22px; height: 30px; position: relative; bottom: 24px; right: 155px; cursor: default;" class="mr-5 hover:text-gray-900">
+    <svg xmlns="http://w3.org" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round" style="width: 100%; height: 100%;">
+        <!-- The Heart Shape (Fills on hover) -->
+        <path id="heart-shape" d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="none" />
+    </svg>
+</a>
+
+<a onmouseover="document.getElementById('bag-path').setAttribute('d', 'M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z M6 11h12M16 11v10H8V11')" onmouseout="document.getElementById('bag-path').setAttribute('d', 'M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z')" style="display: inline-block; color: green; width: 22px; height: 35px; position: relative; bottom: 25px; right: 165px; cursor: default;" class="mr-5 hover:text-gray-900">
+    <svg xmlns="http://w3.org" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1" style="width: 100%; height: 100%;">
+        <!-- Starts as filled because the 'd' layout matches the filled shape -->
+        <path id="bag-path" stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+    </svg>
+</a>
+<a onmouseover="document.getElementById('user-head').setAttribute('fill', 'currentColor'); document.getElementById('user-body').setAttribute('fill', 'currentColor')" onmouseout="document.getElementById('user-head').setAttribute('fill', 'none'); document.getElementById('user-body').setAttribute('fill', 'none')" style="display: inline-block; color: green; width: 22px; height: 30px; position: relative; bottom: 24px; right: 177px; cursor: default;" class="mr-5 hover:text-gray-900">
+    <svg xmlns="http://w3.org" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round" style="width: 100%; height: 100%;">
+        <!-- The Head (Fills on hover) -->
+        <circle id="user-head" cx="12" cy="7" r="4" fill="none" />
+        <!-- The Shoulders/Body (Fills on hover) -->
+        <path id="user-body" d="M5 21a7 7 0 0 1 14 0" fill="none" />
+    </svg>
+</a>
+</div>
+</header>
+<div style="display: block; position: relative;top: 20px;width: 90%;height: 384px;margin: auto;" id="default-carousel" class="relative w-full" data-carousel="slide">
+    <!-- Carousel wrapper -->
+    <div class="relative h-56 overflow-hidden rounded-base md:h-96">
+         <!-- Item 1 -->
+        <div class="hidden duration-700 ease-in-out" data-carousel-item>
+            <img src="Pastel Lifestyle E-commerce Banner Collage.png" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+        </div>
+        <!-- Item 2 -->
+        <div class="hidden duration-700 ease-in-out" data-carousel-item>
+            <img src="Pastel Lifestyle E-commerce Banner Collage2.png" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+        </div>
+        <!-- Item 3 -->
+        <div class="hidden duration-700 ease-in-out" data-carousel-item>
+            <img src="Pastel Lifestyle E-commerce Banner Collage3.png" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+        </div>
+        <!-- Item 4 -->
+        <div class="hidden duration-700 ease-in-out" data-carousel-item>
+            <img src="Pastel Lifestyle E-commerce Banner Collage4.png" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+        </div>
+        <!-- Item 5 -->
+        <div class="hidden duration-700 ease-in-out" data-carousel-item>
+            <img src="ChatGPT Image Oct 4, 2026, 12_55_36 AM.png" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+        </div>
+    </div>
+    <!-- Slider indicators -->
+    <div class="absolute z-30 flex -translate-x-1/2 bottom-5 left-1/2 space-x-3 rtl:space-x-reverse">
+        <button type="button" class="w-3 h-3 rounded-base" aria-current="true" aria-label="Slide 1" data-carousel-slide-to="0"></button>
+        <button type="button" class="w-3 h-3 rounded-base" aria-current="false" aria-label="Slide 2" data-carousel-slide-to="1"></button>
+        <button type="button" class="w-3 h-3 rounded-base" aria-current="false" aria-label="Slide 3" data-carousel-slide-to="2"></button>
+        <button type="button" class="w-3 h-3 rounded-base" aria-current="false" aria-label="Slide 4" data-carousel-slide-to="3"></button>
+        <button type="button" class="w-3 h-3 rounded-base" aria-current="false" aria-label="Slide 5" data-carousel-slide-to="4"></button>
+    </div>
+    <!-- Slider controls -->
+    <button type="button" class="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-prev>
+        <span class="inline-flex items-center justify-center w-10 h-10 rounded-base bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+            <svg class="w-5 h-5 text-white rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m15 19-7-7 7-7"/></svg>
+            <span class="sr-only">Previous</span>
+        </span>
+    </button>
+    <button type="button" class="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-next>
+        <span class="inline-flex items-center justify-center w-10 h-10 rounded-base bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+            <svg class="w-5 h-5 text-white rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m9 5 7 7-7 7"/></svg>
+            <span class="sr-only">Next</span>
+        </span>
+    </button>
+</div>
+<h1 style="margin-top: 40px;position: relative; left: 75px;font-size: x-large;font-weight: bolder;font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">Shop by Category</h1>
+
+<!-- Categories Section Container -->
+<div class="w-full bg-white py-10 px-4 text-center">
+    <!-- The Single-Row Flexbox Layout for 6 Categories -->
+    <div class="flex flex-row justify-center items-center gap-4 md:gap-8 overflow-x-auto whitespace-nowrap pb-2">
+        
+        <!-- Category 1: New Arrivals -->
+        <a href="#new" class="flex flex-col items-center group text-decoration-none" style="cursor: default;">
+            <div class="w-20 h-20 md:w-24 md:h-24 rounded-full bg-[#f4ece1] group-hover:bg-[#98FB98] transition-colors duration-300 flex items-center justify-center border border-gray-100 shadow-sm">
+                <!-- Simple placeholder layout for product icons or emojis -->
+                <span class="text-3xl">✨</span>
+            </div>
+            <span class="mt-3 text-sm font-semibold text-gray-700 group-hover:text-green-700">New In</span>
+        </a>
+
+        <!-- Category 2: Clothing -->
+        <a href="#clothing" class="flex flex-col items-center group text-decoration-none" style="cursor: default;">
+            <div class="w-20 h-20 md:w-24 md:h-24 rounded-full bg-[#f4ece1] group-hover:bg-[#98FB98] transition-colors duration-300 flex items-center justify-center border border-gray-100 shadow-sm">
+                <span class="text-3xl">👕</span>
+            </div>
+            <span class="mt-3 text-sm font-semibold text-gray-700 group-hover:text-green-700">Clothing</span>
+        </a>
+
+        <!-- Category 3: Bags -->
+        <a href="#bags" class="flex flex-col items-center group text-decoration-none" style="cursor: default;">
+            <div class="w-20 h-20 md:w-24 md:h-24 rounded-full bg-[#f4ece1] group-hover:bg-[#98FB98] transition-colors duration-300 flex items-center justify-center border border-gray-100 shadow-sm">
+                <span class="text-3xl">👜</span>
+            </div>
+            <span class="mt-3 text-sm font-semibold text-gray-700 group-hover:text-green-700">Bags</span>
+        </a>
+
+        <!-- Category 4: Accessories -->
+        <a href="#accessories" class="flex flex-col items-center group text-decoration-none" style="cursor: default;">
+            <div class="w-20 h-20 md:w-24 md:h-24 rounded-full bg-[#f4ece1] group-hover:bg-[#98FB98] transition-colors duration-300 flex items-center justify-center border border-gray-100 shadow-sm">
+                <span class="text-3xl">🕶️</span>
+            </div>
+            <span class="mt-3 text-sm font-semibold text-gray-700 group-hover:text-green-700">Accessories</span>
+        </a>
+
+        <!-- Category 5: Bottles/Flasks -->
+        <a href="#bottles" class="flex flex-col items-center group text-decoration-none" style="cursor: default;">
+            <div class="w-20 h-20 md:w-24 md:h-24 rounded-full bg-[#f4ece1] group-hover:bg-[#98FB98] transition-colors duration-300 flex items-center justify-center border border-gray-100 shadow-sm">
+                <span class="text-3xl">🥛</span>
+            </div>
+            <span class="mt-3 text-sm font-semibold text-gray-700 group-hover:text-green-700">Flasks</span>
+        </a>
+
+        <!-- Category 6: Living / Decor -->
+        <a href="#living" class="flex flex-col items-center group text-decoration-none" style="cursor: default;">
+            <div class="w-20 h-20 md:w-24 md:h-24 rounded-full bg-[#f4ece1] group-hover:bg-[#98FB98] transition-colors duration-300 flex items-center justify-center border border-gray-100 shadow-sm">
+                <span class="text-3xl">🪴</span>
+            </div>
+            <span class="mt-3 text-sm font-semibold text-gray-700 group-hover:text-green-700">Living</span>
+        </a>
+
+    </div>
+</div>
+
+<style>
+  /* Product card */
+  .product-card {
+    background: white;
+    border: 1px solid #e5f0e7;
+    border-radius: 16px;
+    padding: 12px;
+    transition: all 0.3s ease;
+  }
+
+  /* Hover effect */
+  .product-card:hover {
+    background: #f0fdf4;
+    border-color: #86efac;
+    box-shadow: 0 12px 28px rgba(22, 101, 52, 0.16);
+    transform: translateY(-6px);
+  }
+
+  /* Image hover effect */
+  .product-image {
+    transition: all 0.4s ease;
+  }
+
+  .product-card:hover .product-image {
+    filter: brightness(0.94);
+    transform: scale(1.06);
+  }
+
+  /* Product title */
+  .product-title {
+    transition: color 0.3s ease;
+  }
+
+  .product-card:hover .product-title {
+    color: #15803d;
+  }
+
+  /* Price */
+  .product-price {
+    color: #16a34a;
+    font-weight: 700;
+  }
+
+  /* Image container */
+  .product-image-box {
+    background: #f0fdf4;
+  }
+
+  .product-link {
+    text-decoration: none;
+    color: inherit;
+  }
+</style>
+
+<!-- Product Section 1 -->
+<section class="bg-white text-gray-700">
+  <div class="container px-5 py-16 mx-auto">
+
+    <h2 class="text-3xl font-bold text-green-800 mb-2">
+      Featured Products
+    </h2>
+    <p class="text-gray-500 mb-10">
+      Discover quality products at great prices.
+    </p>
+
+    <div class="flex flex-wrap -m-3">
+
+      <!-- Product 1 -->
+      <div class="lg:w-1/4 md:w-1/2 p-3 w-full">
+        <a style="cursor: default;" href="Product-1.html" class="product-link">
+          <div class="product-card">
+            <div class="product-image-box block relative h-48 rounded-xl overflow-hidden">
+              <img alt="Smart Phone"
+                class="product-image object-cover object-center w-full h-full block"
+                src="https://img.drz.lazcdn.com/static/pk/p/b8c1f942b1913483a6044c1b2900eb0e.png_400x400q80.png_.avif">
+            </div>
+            <div class="mt-4">
+              <h2 class="product-title text-gray-900 text-lg font-medium">
+                A good Smart Phone
+              </h2>
+              <p class="product-price mt-2">Rs. 20,000</p>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <!-- Product 2 -->
+      <div class="lg:w-1/4 md:w-1/2 p-3 w-full">
+        <a style="cursor: default;" href="Product-2.html" class="product-link">
+          <div class="product-card">
+            <div class="product-image-box block relative h-48 rounded-xl overflow-hidden">
+              <img alt="Knorr Noodles Pack"
+                class="product-image object-cover object-center w-full h-full block"
+                src="https://img.drz.lazcdn.com/static/pk/p/2455ac837fed4b1d150fd2bebc181e10.png_400x400q80.png_.avif">
+            </div>
+            <div class="mt-4">
+              <h2 class="product-title text-gray-900 text-lg font-medium">
+                Knorr Noodles Pack
+              </h2>
+              <p class="product-price mt-2">Rs. 450</p>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <!-- Product 3 -->
+      <div class="lg:w-1/4 md:w-1/2 p-3 w-full">
+        <div class="product-card">
+          <div class="product-image-box relative h-48 rounded-xl overflow-hidden">
+            <img alt="Max Bachat Bar"
+              class="product-image object-cover object-center w-full h-full block"
+              src="https://img.drz.lazcdn.com/static/pk/p/90060f0cd6306a23e6725cbcedae835b.jpg_400x400q80.jpg_.avif">
+          </div>
+          <div class="mt-4">
+            <h2 class="product-title text-gray-900 text-lg font-medium">
+              Max Bachat Bar
+            </h2>
+            <p class="product-price mt-2">Rs. 200</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product 4 -->
+      <div class="lg:w-1/4 md:w-1/2 p-3 w-full">
+        <div class="product-card">
+          <div class="product-image-box relative h-48 rounded-xl overflow-hidden">
+            <img alt="Knorr Blazin Pack"
+              class="product-image object-cover object-center w-full h-full block"
+              src="https://img.drz.lazcdn.com/static/pk/p/aecbf4f39cf3126198c491afb403eccc.jpg_400x400q80.jpg_.avif">
+          </div>
+          <div class="mt-4">
+            <h2 class="product-title text-gray-900 text-lg font-medium">
+              Knorr Blazin Pack
+            </h2>
+            <p class="product-price mt-2">Rs. 500</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product 5 -->
+      <div class="lg:w-1/4 md:w-1/2 p-3 w-full">
+        <div class="product-card">
+          <div class="product-image-box relative h-48 rounded-xl overflow-hidden">
+            <img alt="Sweatshirt and Pajama Trousers"
+              class="product-image object-cover object-center w-full h-full block"
+              src="https://img.drz.lazcdn.com/g/kf/S43e67b71825447b7892c447093e4dbff8.jpg_400x400q80.jpg_.avif">
+          </div>
+          <div class="mt-4">
+            <h2 class="product-title text-gray-900 text-lg font-medium">
+              Sweatshirt &amp; Pajama Trousers
+            </h2>
+            <p class="product-price mt-2">Rs. 2,500</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product 6 -->
+      <div class="lg:w-1/4 md:w-1/2 p-3 w-full">
+        <div class="product-card">
+          <div class="product-image-box relative h-48 rounded-xl overflow-hidden">
+            <img alt="Umrah Saving Box"
+              class="product-image object-cover object-center w-full h-full block"
+              src="https://img.drz.lazcdn.com/static/pk/p/cb32f3103025f22dd7f2f2fd14ac9514.jpg_400x400q80.jpg_.avif">
+          </div>
+          <div class="mt-4">
+            <h2 class="product-title text-gray-900 text-lg font-medium">
+              Umrah Saving Box
+            </h2>
+            <p class="product-price mt-2">FREE</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product 7 -->
+      <div class="lg:w-1/4 md:w-1/2 p-3 w-full">
+        <div class="product-card">
+          <div class="product-image-box relative h-48 rounded-xl overflow-hidden">
+            <img alt="Wall Decoration"
+              class="product-image object-cover object-center w-full h-full block"
+              src="https://img.drz.lazcdn.com/static/pk/p/50a534fa56a86c0388b44a6bc372ad04.jpg_400x400q80.jpg_.avif">
+          </div>
+          <div class="mt-4">
+            <h2 class="product-title text-gray-900 text-lg font-medium">
+              Wall Decoration
+            </h2>
+            <p class="product-price mt-2">Rs. 3,000</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product 8 -->
+      <div class="lg:w-1/4 md:w-1/2 p-3 w-full">
+        <div class="product-card">
+          <div class="product-image-box relative h-48 rounded-xl overflow-hidden">
+            <img alt="Black Pants and Shirts for Men"
+              class="product-image object-cover object-center w-full h-full block"
+              src="https://img.drz.lazcdn.com/g/kf/S512a432145d54ee6a6a9a10a13dac64dP.jpg_400x400q80.jpg_.avif">
+          </div>
+          <div class="mt-4">
+            <h2 class="product-title text-gray-900 text-lg font-medium">
+              Black Pants and Shirts for Men
+            </h2>
+            <p class="product-price mt-2">Rs. 1,500</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- Product Section 2 -->
+<section class="bg-green-50 text-gray-700">
+  <div class="container px-5 py-16 mx-auto">
+
+    <h2 class="text-3xl font-bold text-green-800 mb-2">
+      Explore More
+    </h2>
+    <p class="text-gray-500 mb-10">
+      Find something you will love.
+    </p>
+
+    <div class="flex flex-wrap -m-3">
+
+      <!-- Product 9 -->
+      <div class="lg:w-1/4 md:w-1/2 p-3 w-full">
+        <div class="product-card">
+          <div class="product-image-box relative h-48 rounded-xl overflow-hidden">
+            <img alt="Brown Sleepers for Men"
+              class="product-image object-cover object-center w-full h-full block"
+              src="https://img.drz.lazcdn.com/static/pk/p/aa4244fdc1e20e2f6e938393b7eff7e8.jpg_400x400q80.jpg_.avif">
+          </div>
+          <div class="mt-4">
+            <h2 class="product-title text-gray-900 text-lg font-medium">
+              Brown Sleepers for Men
+            </h2>
+            <p class="product-price mt-2">Rs. 4,500</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product 10 -->
+      <div class="lg:w-1/4 md:w-1/2 p-3 w-full">
+        <div class="product-card">
+          <div class="product-image-box relative h-48 rounded-xl overflow-hidden">
+            <img alt="Fine Leather Wallet"
+              class="product-image object-cover object-center w-full h-full block"
+              src="https://img.drz.lazcdn.com/static/pk/p/436beb15c18c06269a4770c06231dbae.jpg_400x400q80.jpg_.avif">
+          </div>
+          <div class="mt-4">
+            <h2 class="product-title text-gray-900 text-lg font-medium">
+              Fine Leather Wallet
+            </h2>
+            <p class="product-price mt-2">Rs. 1,000</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product 11 -->
+      <div class="lg:w-1/4 md:w-1/2 p-3 w-full">
+        <div class="product-card">
+          <div class="product-image-box relative h-48 rounded-xl overflow-hidden">
+            <img alt="Hair Clip"
+              class="product-image object-cover object-center w-full h-full block"
+              src="https://img.drz.lazcdn.com/g/kf/Sa19080d1a8044b73b6ec9a6fc5e7efe22.jpg_400x400q80.jpg_.avif">
+          </div>
+          <div class="mt-4">
+            <h2 class="product-title text-gray-900 text-lg font-medium">
+              Clip For Real Men
+            </h2>
+            <p class="product-price mt-2">Rs. 500</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product 12 -->
+      <div class="lg:w-1/4 md:w-1/2 p-3 w-full">
+        <div class="product-card">
+          <div class="product-image-box relative h-48 rounded-xl overflow-hidden">
+            <img alt="Janan and Dirham Perfumes"
+              class="product-image object-cover object-center w-full h-full block"
+              src="https://img.drz.lazcdn.com/static/pk/p/177464172f442f1da4bc038a374e7ad9.jpg_400x400q80.jpg_.avif">
+          </div>
+          <div class="mt-4">
+            <h2 class="product-title text-gray-900 text-lg font-medium">
+              Janan &amp; Dirham Perfumes
+            </h2>
+            <p class="product-price mt-2">Rs. 5,000 (Each)</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product 13 -->
+      <div class="lg:w-1/4 md:w-1/2 p-3 w-full">
+        <div class="product-card">
+          <div class="product-image-box relative h-48 rounded-xl overflow-hidden">
+            <img alt="School Bag"
+              class="product-image object-cover object-center w-full h-full block"
+              src="https://img.drz.lazcdn.com/static/pk/p/ee32a3db372a1e2c09c21438cf7a1191.jpg_400x400q80.jpg_.avif">
+          </div>
+          <div class="mt-4">
+            <h2 class="product-title text-gray-900 text-lg font-medium">
+              School Bag
+            </h2>
+            <p class="product-price mt-2">Rs. 1,200</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product 14 -->
+      <div class="lg:w-1/4 md:w-1/2 p-3 w-full">
+        <div class="product-card">
+          <div class="product-image-box relative h-48 rounded-xl overflow-hidden">
+            <img alt="Gaming Headsets"
+              class="product-image object-cover object-center w-full h-full block"
+              src="https://img.drz.lazcdn.com/static/pk/p/5a31eed242cdb70c7c6085e81b81f218.jpg_400x400q80.jpg_.avif">
+          </div>
+          <div class="mt-4">
+            <h2 class="product-title text-gray-900 text-lg font-medium">
+              Gaming Headsets
+            </h2>
+            <p class="product-price mt-2">Rs. 3,500</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product 15 -->
+      <div class="lg:w-1/4 md:w-1/2 p-3 w-full">
+        <div class="product-card">
+          <div class="product-image-box relative h-48 rounded-xl overflow-hidden">
+            <img alt="Security Camera"
+              class="product-image object-cover object-center w-full h-full block"
+              src="https://img.drz.lazcdn.com/static/pk/p/6877e1f178d8361816e03afcd86eca2b.jpg_400x400q80.jpg_.avif">
+          </div>
+          <div class="mt-4">
+            <h2 class="product-title text-gray-900 text-lg font-medium">
+              Security Camera
+            </h2>
+            <p class="product-price mt-2">Rs. 7,000</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product 16 -->
+      <div class="lg:w-1/4 md:w-1/2 p-3 w-full">
+        <div class="product-card">
+          <div class="product-image-box relative h-48 rounded-xl overflow-hidden">
+            <img alt="Makeup Product"
+              class="product-image object-cover object-center w-full h-full block"
+              src="https://img.drz.lazcdn.com/g/kf/S42cd6e61a5d1451fb898043a4047ee44L.jpg_400x400q80.jpg_.avif">
+          </div>
+          <div class="mt-4">
+            <h2 class="product-title text-gray-900 text-lg font-medium">
+              Women's Makeup Product
+            </h2>
+            <p class="product-price mt-2">Rs. 400</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<script src="https://cdn.jsdelivr.net/npm/flowbite@4.0.1/dist/flowbite.min.js"></script>
+  </body>
+</html>

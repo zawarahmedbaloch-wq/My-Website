@@ -1,0 +1,642 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  </head>
+  <body>
+      <header style="height: 75px;border-radius: 20px;box-shadow: 2px 3px 8px rgba(120, 199, 2, 0.4);position:sticky;top: 0;z-index: 100;background-color: white;" class="text-gray-600 body-font">
+  <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
+    <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
+     <img style="position: relative;left: 30px;bottom: 25px; width: 75px;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRmXc1vAn3EDcbjxb1TUozBDI2mUhgEZez5t9AQ_Yqscw&s=10" alt="Logo">
+      <span style="position: relative;left: 15px;bottom: 25px; font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;font-size: 30px;color: green;" class="ml-3 text-xl">Nexora</span>
+    </a>
+    <nav style="font-family:sans-serif;position: relative;left: 70px;bottom: 25px; font-size: small; color: green;" class="md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-none-400	flex flex-wrap items-center text-base justify-center">
+      <a class="mr-5 hover:text-gray-900">Home</a>
+      <a class="mr-5 hover:text-gray-900">Shop</a>
+      <a class="mr-5 hover:text-gray-900">Categories</a>
+      <a class="mr-5 hover:text-gray-900">About</a>
+      <a class="mr-5 hover:text-gray-900">Contact</a>
+    </nav>
+<input style="display: block;border-radius: 60px;color: green;box-shadow: 0px 2px 8px rgba(120, 199, 2, 0.4);padding: 8px 70px;outline: green;position: relative;right: 180px;bottom: 25px; font-size: small;" type="text" placeholder="Search Here" onkeyup="filteritems()">
+<a onmouseover="document.getElementById('heart-shape').setAttribute('fill', 'currentColor')" onmouseout="document.getElementById('heart-shape').setAttribute('fill', 'none')" style="display: inline-block; color: green; width: 22px; height: 30px; position: relative; bottom: 24px; right: 155px; cursor: default;" class="mr-5 hover:text-gray-900">
+    <svg xmlns="http://w3.org" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round" style="width: 100%; height: 100%;">
+        <!-- The Heart Shape (Fills on hover) -->
+        <path id="heart-shape" d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="none" />
+    </svg>
+</a>
+
+<a onmouseover="document.getElementById('bag-path').setAttribute('d', 'M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z M6 11h12M16 11v10H8V11')" onmouseout="document.getElementById('bag-path').setAttribute('d', 'M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z')" style="display: inline-block; color: green; width: 22px; height: 35px; position: relative; bottom: 25px; right: 165px; cursor: default;" class="mr-5 hover:text-gray-900">
+    <svg xmlns="http://w3.org" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1" style="width: 100%; height: 100%;">
+        <!-- Starts as filled because the 'd' layout matches the filled shape -->
+        <path id="bag-path" stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+    </svg>
+</a>
+<a onmouseover="document.getElementById('user-head').setAttribute('fill', 'currentColor'); document.getElementById('user-body').setAttribute('fill', 'currentColor')" onmouseout="document.getElementById('user-head').setAttribute('fill', 'none'); document.getElementById('user-body').setAttribute('fill', 'none')" style="display: inline-block; color: green; width: 22px; height: 30px; position: relative; bottom: 24px; right: 177px; cursor: default;" class="mr-5 hover:text-gray-900">
+    <svg xmlns="http://w3.org" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round" style="width: 100%; height: 100%;">
+        <!-- The Head (Fills on hover) -->
+        <circle id="user-head" cx="12" cy="7" r="4" fill="none" />
+        <!-- The Shoulders/Body (Fills on hover) -->
+        <path id="user-body" d="M5 21a7 7 0 0 1 14 0" fill="none" />
+    </svg>
+</a>
+</div>
+</header>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A Good Mobile Phone | Nexora</title>
+
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .product-card {
+      transition: box-shadow .3s ease, border-color .3s ease;
+    }
+
+    .product-card:hover {
+      box-shadow: 0 18px 45px rgba(22, 101, 52, .12);
+      border-color: #86efac;
+    }
+
+    .product-image {
+      transition: transform .45s ease;
+    }
+
+    .image-box:hover .product-image {
+      transform: scale(1.05);
+    }
+
+    .detail-row {
+      transition: background .25s ease;
+    }
+
+    .detail-row:hover {
+      background: #f0fdf4;
+    }
+
+    .green-button {
+      background: #15803d;
+      box-shadow: 0 4px 12px rgba(21, 128, 61, .15);
+      transition: all .25s ease;
+    }
+
+    .green-button:hover {
+      background: #166534;
+      transform: translateY(-2px);
+      box-shadow: 0 7px 18px rgba(21, 128, 61, .22);
+    }
+
+    .favorite-button {
+      transition: all .25s ease;
+    }
+
+    .favorite-button.is-favorite {
+      color: #e11d48;
+      background: #fff1f2;
+      border-color: #fecdd3;
+    }
+
+    .modal {
+      display: none;
+    }
+
+    .modal.is-open {
+      display: flex;
+    }
+
+    .modal-card {
+      animation: pop-in .2s ease-out;
+    }
+
+    @keyframes pop-in {
+      from {
+        opacity: 0;
+        transform: translateY(8px) scale(.99);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+  </style>
+</head>
+
+<body class="bg-green-50 text-gray-700">
+
+  <main class="px-4 py-12 md:px-8 md:py-20">
+    <div class="mx-auto max-w-6xl">
+
+      <header class="mb-8">
+        <span class="inline-flex items-center gap-2 rounded-full border border-green-200 bg-white px-4 py-2 text-xs font-semibold tracking-wide text-green-700">
+          <span class="h-2 w-2 rounded-full bg-green-500"></span>
+          NEXORA / PRODUCT DETAILS
+        </span>
+
+        <h2 class="mt-4 text-2xl font-semibold tracking-tight text-green-950 md:text-3xl">
+          Discover your next favourite.
+        </h2>
+
+        <p class="mt-2 text-sm text-gray-500">
+          Everyday essentials, carefully selected for you.
+        </p>
+      </header>
+
+      <!-- Product Card -->
+      <section class="product-card overflow-hidden rounded-3xl border border-green-100 bg-white shadow-lg shadow-green-900/5">
+
+        <div class="grid items-center gap-8 p-5 sm:p-8 lg:grid-cols-2 lg:gap-12 lg:p-12">
+
+          <!-- Product Details -->
+          <div class="order-1">
+
+            <div class="mb-4 flex flex-wrap items-center justify-between gap-3">
+              <span class="rounded-full bg-green-100 px-3 py-1.5 text-xs font-semibold text-green-800">
+                INSTANT FOOD
+              </span>
+
+              <span class="flex items-center gap-1.5 text-xs font-medium text-green-700">
+                <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 0a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                </svg>
+                Product listing
+              </span>
+            </div>
+
+            <p class="mb-2 text-sm font-medium text-green-700">
+              Nexora Market
+            </p>
+
+            <h1 class="text-3xl font-semibold leading-tight tracking-tight text-green-950 md:text-4xl">
+              A good Mobile Phone
+            </h1>
+
+            <p class="mt-3 text-sm leading-7 text-gray-500">
+            A very good mobile phone at that price is such a dream.
+            Place your order now before the stocks get empty.
+            </p>
+
+            <!-- Rating -->
+            <div class="mt-5 flex flex-wrap items-center gap-3">
+
+              <div class="flex items-center gap-1 text-amber-400" aria-label="4 out of 5 stars">
+                <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+                <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+                <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+                <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+                <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+              </div>
+
+              <span class="text-sm font-medium text-gray-600">4.0</span>
+              <span class="h-4 w-px bg-gray-200"></span>
+
+              <a href="#reviews" class="text-sm text-green-700 underline-offset-4 hover:underline">
+                4 Reviews
+              </a>
+            </div>
+
+            <!-- Social Sharing -->
+            <div class="mt-5 flex items-center gap-3">
+              <span class="text-xs font-medium text-gray-400">SHARE</span>
+
+              <a style="cursor: default;" href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="rounded-full border border-green-100 p-2 text-gray-500 transition hover:bg-green-50 hover:text-green-700">
+                <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/>
+                </svg>
+              </a>
+
+              <a style="cursor: default;" href="https://x.com/" target="_blank" rel="noopener noreferrer" aria-label="X" class="rounded-full border border-green-100 p-2 text-gray-500 transition hover:bg-green-50 hover:text-green-700">
+                <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M18.9 2H22l-6.8 7.8L23.2 22h-6.3L12 14.6 5.6 22H2.4l7.3-8.4L1.9 2h6.5l4.5 6.8zM17.8 20h1.7L7.4 3.9H5.6z"/>
+                </svg>
+              </a>
+
+              <button id="shareWhatsApp" type="button" aria-label="Share on WhatsApp" class="rounded-full border border-green-100 p-2 text-gray-500 transition hover:bg-green-50 hover:text-green-700">
+                <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M21 11.5a8.4 8.4 0 01-12.4 7.4L3 21l1.8-5.4A8.5 8.5 0 1121 11.5z"/>
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 9c.5 2 2 3.5 4.5 4.5l1.2-1.2 2 1c-.2 1.5-1.2 2.2-2.8 2.2-3.5-.5-6.5-3.5-7-7 .1-1.5.8-2.5 2.2-2.8l1 2z"/>
+                </svg>
+              </button>
+            </div>
+
+            <div class="my-7 h-px bg-green-100"></div>
+
+            <!-- Pack Size -->
+            <div class="detail-row flex flex-wrap items-center justify-between gap-4 rounded-xl px-3 py-4">
+
+              <div>
+                <p class="text-sm font-semibold text-green-950">
+                  Choose your fav colour
+                </p>
+
+                <p class="mt-1 text-xs text-gray-400">
+                  Select your preferred option
+                </p>
+              </div>
+
+              <div class="relative">
+                <select id="colour" class="w-44 appearance-none rounded-xl border border-green-200 bg-white py-3 pl-4 pr-10 text-sm font-medium text-gray-700 outline-none transition focus:border-green-500 focus:ring-4 focus:ring-green-100">
+                  <option>Blue</option>
+                  <option>white</option>
+                  <option>Black</option>
+                </select>
+
+                <svg class="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-green-700" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M6 9l6 6 6-6"/>
+                </svg>
+              </div>
+            </div>
+
+            <!-- Price and Buttons -->
+            <div class="mt-5 rounded-2xl bg-green-50 p-5 sm:p-6">
+
+              <p class="text-xs font-medium uppercase tracking-widest text-green-700">
+                Price
+              </p>
+
+              <div class="mt-1 flex flex-wrap items-end justify-between gap-4">
+                <div>
+                  <p class="text-3xl font-semibold tracking-tight text-green-950">
+                    Rs. 20,000
+                  </p>
+
+                  <p class="mt-1 text-xs text-gray-500">
+                    Price shown for this listing
+                  </p>
+                </div>
+
+                <button id="favoriteBtn" type="button" aria-label="Add to favourites" aria-pressed="false" class="favorite-button rounded-xl border border-green-200 bg-white p-3 text-green-700 hover:border-rose-200 hover:text-rose-500">
+                  <svg id="favoriteIcon" class="h-5 w-5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewBox="0 0 24 24">
+                    <path d="M20.8 4.6a5.5 5.5 0 00-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 00-7.8 7.8l1.1 1.1 7.8 7.7 7.8-7.7 1.1-1.1a5.5 5.5 0 00-.1-7.8z"/>
+                  </svg>
+                </button>
+              </div>
+
+              <p id="favoriteMessage" class="mt-2 hidden text-xs font-medium text-green-700" aria-live="polite"></p>
+
+              <button id="purchaseBtn" type="button" class="green-button mt-5 flex w-full items-center justify-center gap-3 rounded-xl px-6 py-4 text-sm font-semibold text-white">
+                Purchase Now
+                <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-6-6l6 6-6 6"/>
+                </svg>
+              </button>
+
+              <p class="mt-4 text-center text-xs text-gray-500">
+                A better everyday shopping experience.
+              </p>
+            </div>
+          </div>
+
+          <!-- Product Image -->
+          <div class="order-2">
+            <div class="image-box relative overflow-hidden rounded-3xl border border-green-100 bg-green-50 p-5 sm:p-8">
+
+              <span class="absolute left-5 top-5 z-10 rounded-full bg-white/90 px-3 py-2 text-xs font-semibold text-green-800 shadow-sm">
+                Product spotlight
+              </span>
+
+              <div class="flex min-h-72 items-center justify-center sm:min-h-96">
+                <img
+                  class="product-image h-auto max-h-96 w-full object-contain"
+                  src="https://img.drz.lazcdn.com/static/pk/p/b8c1f942b1913483a6044c1b2900eb0e.png_400x400q80.png_.avif"
+                  alt="Mobile phone"
+                  loading="lazy">
+              </div>
+
+              <div class="mt-4 rounded-2xl border border-green-100 bg-white p-4">
+                <div class="flex items-center gap-3">
+
+                  <div class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-green-100 text-green-700">
+                    <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M12 3l2.5 5.5L20 11l-5.5 2.5L12 19l-2.5-5.5L4 11l5.5-2.5L12 3z"/>
+                    </svg>
+                  </div>
+
+                  <div>
+                    <p class="text-sm font-semibold text-green-950">
+                      Everyday favourite
+                    </p>
+
+                    <p class="mt-1 text-xs leading-5 text-gray-500">
+                      Explore the best phones at lower prices on Nexora.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Reviews -->
+      <section id="reviews" class="mt-8 rounded-2xl border border-green-100 bg-white p-6 sm:p-8">
+        <p class="text-xs font-semibold uppercase tracking-widest text-green-700">
+          Customer feedback
+        </p>
+
+        <h2 class="mt-2 text-xl font-semibold text-green-950">
+          Product reviews
+        </h2>
+
+        <p class="mt-2 text-sm leading-6 text-gray-500">
+          Connect this section to real customer reviews when your store is ready.
+        </p>
+      </section>
+
+    </div>
+  </main>
+
+   <!-- Checkout Modal -->
+  <div id="checkoutModal" class="modal fixed inset-0 z-50 items-center justify-center overflow-y-auto bg-gray-950/50 p-4" role="dialog" aria-modal="true" aria-labelledby="checkoutTitle">
+
+    <div class="modal-card my-auto w-full max-w-md rounded-3xl border border-green-100 bg-white p-6 shadow-2xl sm:p-8">
+
+      <div class="flex items-start justify-between gap-4">
+        <div>
+          <span class="rounded-full bg-green-100 px-3 py-1.5 text-xs font-semibold text-green-800">
+            NEXORA CHECKOUT
+          </span>
+
+          <h2 id="checkoutTitle" class="mt-4 text-2xl font-semibold text-green-950">
+            Your order summary
+          </h2>
+
+          <p class="mt-2 text-sm leading-6 text-gray-500">
+            Check your selection before continuing.
+          </p>
+        </div>
+
+        <button id="closeModal" type="button" aria-label="Close checkout" class="rounded-xl bg-green-50 p-2 text-gray-500 hover:bg-green-100">
+          ✕
+        </button>
+      </div>
+
+      <div class="mt-6 flex items-center gap-4 rounded-2xl bg-green-50 p-4">
+        <img
+          src="https://img.drz.lazcdn.com/static/pk/p/b8c1f942b1913483a6044c1b2900eb0e.png_400x400q80.png_.avif"
+          alt="Mobile Phone"
+          class="h-20 w-20 rounded-xl bg-white object-contain">
+
+        <div>
+          <p class="font-semibold text-green-950">
+            Mobile Phone
+          </p>
+
+          <p id="modalPack" class="mt-1 text-xs text-gray-500">
+            Blue colour
+          </p>
+
+          <p class="mt-2 font-semibold text-green-800">
+            Rs.20,000 each
+          </p>
+        </div>
+      </div>
+
+      <!-- Quantity -->
+      <div class="mt-5 flex items-center justify-between gap-4">
+        <span class="text-sm text-gray-600">Quantity</span>
+
+        <div class="flex items-center gap-3">
+          <button id="decreaseQty" type="button" aria-label="Decrease quantity" class="h-9 w-9 rounded-lg border border-green-200 text-lg text-green-800 hover:bg-green-50">
+            −
+          </button>
+
+          <span id="quantityValue" class="min-w-5 text-center font-semibold text-green-950">
+            1
+          </span>
+
+          <button id="increaseQty" type="button" aria-label="Increase quantity" class="h-9 w-9 rounded-lg border border-green-200 text-lg text-green-800 hover:bg-green-50">
+            +
+          </button>
+        </div>
+      </div>
+
+      <!-- Price Summary -->
+      <div class="mt-5 space-y-3 border-y border-green-100 py-4">
+
+        <div class="flex justify-between text-sm">
+          <span class="text-gray-500">Subtotal</span>
+          <span id="subtotal" class="font-medium text-gray-800">Rs.20,000</span>
+        </div>
+
+        <div class="flex justify-between text-sm">
+          <span class="text-gray-500">Delivery</span>
+          <span class="text-gray-500">To be confirmed</span>
+        </div>
+
+        <div class="flex justify-between">
+          <span class="font-semibold text-green-950">Total</span>
+          <span id="total" class="text-lg font-semibold text-green-800">Rs.20,000</span>
+        </div>
+      </div>
+
+      <p class="mt-4 rounded-xl border border-amber-200 bg-amber-50 p-3 text-xs leading-5 text-amber-800">
+        This demo uses WhatsApp to send an order enquiry. Delivery and final availability must be confirmed by the seller.
+      </p>
+
+      <button id="placeOrder" type="button" class="green-button mt-5 flex w-full items-center justify-center gap-2 rounded-xl px-6 py-4 text-sm font-semibold text-white">
+        Continue with WhatsApp
+
+        <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-6-6l6 6-6 6"/>
+        </svg>
+      </button>
+
+      <button id="keepShopping" type="button" class="mt-3 w-full rounded-xl border border-green-200 bg-white px-6 py-3 text-sm font-medium text-green-800 hover:bg-green-50">
+        Keep shopping
+      </button>
+
+    </div>
+  </div>
+
+  <!-- JavaScript -->
+  <script>
+    (() => {
+      const productName = 'A Good Mobile Phone';
+      const unitPrice = 20,000;
+
+      const favoriteBtn = document.getElementById('favoriteBtn');
+      const favoriteIcon = document.getElementById('favoriteIcon');
+      const favoriteMessage = document.getElementById('favoriteMessage');
+
+      const packSize = document.getElementById('packSize');
+      const modal = document.getElementById('checkoutModal');
+      const purchaseBtn = document.getElementById('purchaseBtn');
+
+      const modalPack = document.getElementById('modalPack');
+      const quantityValue = document.getElementById('quantityValue');
+      const subtotal = document.getElementById('subtotal');
+      const total = document.getElementById('total');
+
+      let quantity = 1;
+      let isFavorite = false;
+
+      // Load saved favourite state
+      try {
+        isFavorite = localStorage.getItem('nexora-knorr-favorite') === 'true';
+      } catch (error) {
+        // The button still works if localStorage is unavailable.
+      }
+
+      function renderFavorite() {
+        favoriteBtn.classList.toggle('is-favorite', isFavorite);
+
+        favoriteBtn.setAttribute('aria-pressed', String(isFavorite));
+        favoriteBtn.setAttribute(
+          'aria-label',
+          isFavorite ? 'Remove from favourites' : 'Add to favourites'
+        );
+
+        favoriteIcon.setAttribute(
+          'fill',
+          isFavorite ? 'currentColor' : 'none'
+        );
+
+        favoriteMessage.textContent = isFavorite
+          ? 'Added to your favourites.'
+          : 'Removed from your favourites.';
+
+        favoriteMessage.classList.remove('hidden');
+      }
+
+      // Favourite button
+      favoriteBtn.addEventListener('click', () => {
+        isFavorite = !isFavorite;
+
+        try {
+          localStorage.setItem(
+            'nexora-knorr-favorite',
+            String(isFavorite)
+          );
+        } catch (error) {
+          // Favourite toggling still works for this page session.
+        }
+
+        renderFavorite();
+      });
+
+      function formatPrice(value) {
+        return 'Rs. ' + value.toLocaleString('en-PK');
+      }
+
+      // Update purchase summary
+      function renderOrder() {
+        modalPack.textContent = packSize.value;
+        quantityValue.textContent = quantity;
+
+        subtotal.textContent = formatPrice(unitPrice * quantity);
+        total.textContent = formatPrice(unitPrice * quantity);
+      }
+
+      // Open checkout
+      function openModal() {
+        quantity = 1;
+        renderOrder();
+
+        modal.classList.add('is-open');
+        document.body.style.overflow = 'hidden';
+
+        document.getElementById('closeModal').focus();
+      }
+
+      // Close checkout
+      function closeModal() {
+        modal.classList.remove('is-open');
+        document.body.style.overflow = '';
+        purchaseBtn.focus();
+      }
+
+      purchaseBtn.addEventListener('click', openModal);
+
+      document.getElementById('closeModal')
+        .addEventListener('click', closeModal);
+
+      document.getElementById('keepShopping')
+        .addEventListener('click', closeModal);
+
+      // Close by clicking the dark background
+      modal.addEventListener('click', event => {
+        if (event.target === modal) {
+          closeModal();
+        }
+      });
+
+      // Close with Escape key
+      document.addEventListener('keydown', event => {
+        if (
+          event.key === 'Escape' &&
+          modal.classList.contains('is-open')
+        ) {
+          closeModal();
+        }
+      });
+
+      // Update when pack size changes
+      packSize.addEventListener('change', renderOrder);
+
+      // Quantity controls
+      document.getElementById('increaseQty')
+        .addEventListener('click', () => {
+          if (quantity < 99) {
+            quantity++;
+          }
+
+          renderOrder();
+        });
+
+      document.getElementById('decreaseQty')
+        .addEventListener('click', () => {
+          if (quantity > 1) {
+            quantity--;
+          }
+
+          renderOrder();
+        });
+
+      // Send order enquiry through WhatsApp
+      document.getElementById('placeOrder')
+        .addEventListener('click', () => {
+          const message =
+            `Hello, I would like to enquire about an order:\n` +
+            `Product: ${productName}\n` +
+            `Pack size: ${packSize.value}\n` +
+            `Quantity: ${quantity}\n` +
+            `Listed subtotal: ${formatPrice(unitPrice * quantity)}\n` +
+            `Please confirm availability and delivery charges.`;
+
+          window.open(
+            'https://wa.me/?text=' + encodeURIComponent(message),
+            '_blank',
+            'noopener,noreferrer'
+          );
+        });
+
+      // Share product through WhatsApp
+      document.getElementById('shareWhatsApp')
+        .addEventListener('click', () => {
+          const message =
+            `Check out ${productName} at Nexora. Listed price: Rs. ${unitPrice}.`;
+
+          window.open(
+            'https://wa.me/?text=' + encodeURIComponent(message),
+            '_blank',
+            'noopener,noreferrer'
+          );
+        });
+    })();
+  </script>
+</body>
+</html>
